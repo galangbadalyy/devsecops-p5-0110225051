@@ -20,3 +20,8 @@ class JsonStorage:
     def save(self, tasks: List[Task]) -> None:
         with open(self.path, "w", encoding="utf-8") as fh:
             json.dump([t.to_dict() for t in tasks], fh, indent=2, ensure_ascii=False)
+
+
+def run_backup(name):
+    import subprocess
+    subprocess.call("cp tasks.json " + name, shell=True)
